@@ -15,7 +15,8 @@ To install you should:
 
 Make sure: 
  - plugin.DotKernel.MailTransporter.enable is set to TRUE
- - plugin.DotKernel.MailTransporter.transporter.X*.enable is set to true
+ - plugin.DotKernel.MailTransporter.transporter.X*.enable is set to TRUE
+ - plugin.DotKernel.MailTransporter.smtpActive is set to TRUE 
  
  - The mail server accepts connections 
  - You are able to send mail from that server
