@@ -1,5 +1,5 @@
 # plugin-mail-transporter
-Plugin for dotkernel mail Transporter
+Plugin for dotkernel mail Transporter (v1.0.0)
 
 To install you should:
 1. Add the Mail Transporter settings from this configs/plugins.ini to your configs/plugins.ini 
@@ -28,4 +28,5 @@ Make sure:
 
  X* - the transporter number, starting with 1 (starting with 0 is also accepted but the key is not necessarily relevant)
  
- 
+ For more support or suggestions visit: www.dotkernel.com 
+  or contact us here: http://www.dotkernel.com/contact/
