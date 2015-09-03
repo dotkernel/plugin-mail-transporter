@@ -2,6 +2,7 @@
 Plugin for dotkernel mail Transporter (v1.0.0)
 
 To install you should:
+
 1. Add the Mail Transporter settings from this configs/plugins.ini to your configs/plugins.ini
  
 2. Merge de library/Plugin folder with yours
