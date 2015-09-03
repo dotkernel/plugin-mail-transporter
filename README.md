@@ -2,10 +2,15 @@
 Plugin for dotkernel mail Transporter (v1.0.0)
 
 To install you should:
-1. Add the Mail Transporter settings from this configs/plugins.ini to your configs/plugins.ini 
+1. Add the Mail Transporter settings from this configs/plugins.ini to your configs/plugins.ini
+ 
 2. Merge de library/Plugin folder with yours
+
 3. Replace the Dot_Email Constructor with the one found in /library/Dot/Email.php or uncomment the plugin usage in your Dot_Email Constructor (works only for LTS versions)
+
 4. Add missing methods (if your version is not LTS)
+
+
 
 Make sure: 
  - plugin.DotKernel.MailTransporter.enable is set to TRUE
