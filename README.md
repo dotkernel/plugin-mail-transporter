@@ -15,10 +15,10 @@ To install you should:
 * Security notice:
  - In order to protect your SMTP transporters, or any sensible plugin data make sure a .htaccess file exists at least in the /config directory
   The .htaccess file must contain these two lines:
-  
+<code>
     Order Deny,Allow
     Deny from all
-
+</code>
  DotKernel comes with this file within the /configs/ directory, but if you don't have it, it must be created.
  
 
