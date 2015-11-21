@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- production config -->
+	<production>
+		<transporterList>
+			<transporter>
+				<!-- enable/disable this transporter -->
+				<enable>true</enable>
+				<!-- smtp server login -->
+				<username>user@example.com</username>
+				<password>password</password>
+				<!--  smtp host -->
+				<server>mail.example.com</server>
+				<!--  smtp port -->
+				<port>465</port>
+				<!-- ssl =  ssl / tls / false (if disabled) -->
+				<ssl>ssl</ssl>
+			</transporter>
+			<transporter>
+				<enable>true</enable>
+				<!-- smtp server login -->
+				<username>user@example.com</username>
+				<password>password</password>
+				<!--  smtp host -->
+				<server>mail.example.com</server>
+				<!--  smtp port -->
+				<port>465</port>
+				<!-- ssl =  ssl / tls / false (if disabled) -->
+				<ssl>ssl</ssl>
+			</transporter>
+		</transporterList>
+	</production>
+	
+	<!-- staging config -->
+	<staging extends="production">
+		<!-- Write here ONLY the CHANGES. CAUTION!!! if you overwrite transporterList you will lose all the transporters on overwriting -->
+	</staging>
+	
+	<!-- development config -->
+	<development extends="production">
+	</development>
+	
+</config>

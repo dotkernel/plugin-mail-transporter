@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- production config -->
+	<production>
+		<!-- SMTP Transport / SendMail Transporter -->
+		<!-- Use SMTP Transport if not selected will use SentMail Transporter  --> 
+		<!-- Sendmail will also be used as backup -->
+		<!-- Options: true/false -->
+		<smtpActive>true</smtpActive>
+		<!-- Site Email Address - The email address that recieves all contact emails from the site.   -->
+		<!-- Also used as Sender Email for 'forgot password'. -->
+		<siteEmail>user@example.com</siteEmail>
+		<!--  Site Email Name - The email address Alias or name   -->
+		<fromName>John Doe</fromName>
+	</production>
+	
+	<!-- staging config -->
+	<staging extends="production">
+		<!-- Write here ONLY the CHANGES. CAUTION!!! if you overwrite transporterList you will lose all the transporters on overwriting -->
+	</staging>
+	
+	<!-- development config -->
+	<development extends="production">
+	</development>
+	
+</config>

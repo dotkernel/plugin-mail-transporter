@@ -1,5 +1,5 @@
 # plugin-mail-transporter
-Plugin for dotkernel mail Transporter (v1.0.0)
+Plugin for dotkernel mail Transporter (v1.0.1)
 
 To install you should:
 
@@ -12,16 +12,30 @@ To install you should:
 4. Add missing methods (if your version is not LTS)
 
 
+* Security notice:
+ - In order to protect your SMTP transporters, or any sensible plugin data make sure a .htaccess file exists at least in the /config directory
+  The .htaccess file must contain these two lines:
+  
+    Order Deny,Allow
+    Deny from all
 
-Make sure: 
- - plugin.DotKernel.MailTransporter.enable is set to TRUE
- - plugin.DotKernel.MailTransporter.transporter.X*.enable is set to TRUE
- - plugin.DotKernel.MailTransporter.smtpActive is set to TRUE 
+ DotKernel comes with this file within the /configs/ directory, but if you don't have it, it must be created.
  
+
+* Make sure plugin settings are valid:
+ - plugin.DotKernel.MailTransporter.enable = true
+ - plugin.DotKernel.MailTransporter.config_file[config] = /path/to/config.xml
+ - plugin.DotKernel.MailTransporter.config_file[transporter_list] = /path/to/transporter.xml
+ - the files exist
+
+And if you want to use smtp mail make sure:
+ 
+ - Your config.xml contains "<smtpActive>true</smtpActive>" at least within the production tag
  - The mail server accepts connections 
  - You are able to send mail from that server
 
- E-mail now works as a plugin, but the limit cannot be set
+ 
+ E-mail now works as a plugin, but the limit cannot be set 
  
  You can set more transporters and disable the ones you don't want to use
  
@@ -33,7 +47,7 @@ Make sure:
  * http://framework.zend.com/manual/1.12/en/zend.mail.smtp-authentication.html
  * http://framework.zend.com/manual/1.12/en/zend.mail.smtp-secure.html
 
- X* - the transporter number, starting with 1 (starting with 0 is also accepted but the key is not necessarily relevant)
+ 
  
  For more support or suggestions visit: www.dotkernel.com 
   or contact us here: http://www.dotkernel.com/contact/
