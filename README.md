@@ -9,16 +9,16 @@ To install you should:
 
 3. Replace the Dot_Email Constructor with the one found in /library/Dot/Email.php or uncomment the plugin usage in your Dot_Email Constructor (works only for LTS versions)
 
-4. Add missing methods (if your version is not LTS)
+4. Add missing methods from LTS version (if your version is not LTS)
 
 
 * Security notice:
  - In order to protect your SMTP transporters, or any sensible plugin data make sure a .htaccess file exists at least in the /config directory
   The .htaccess file must contain these two lines:
-<code>
-    Order Deny,Allow
-    Deny from all
-</code>
+```
+   Order Deny,Allow
+   Deny from all
+```
  DotKernel comes with this file within the /configs/ directory, but if you don't have it, it must be created.
  
 
