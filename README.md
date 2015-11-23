@@ -30,7 +30,8 @@ These files are also present in this repository
 In case you are not sure we have added that file in this repository so you can simply copy it form here. 
 
 
-* Security notice:
+Security notice:
+-------
  - In order to protect your SMTP transporters, or any sensible plugin data make sure a .htaccess file exists at least in the <code>/configs</code> directory
   The .htaccess file must contain these two lines:
 ```
@@ -41,17 +42,17 @@ In case you are not sure we have added that file in this repository so you can s
  
 
 * Make sure plugin.ini settings are valid:
- ```
+```
  plugin.DotKernel.MailTransporter.enable = true
  plugin.DotKernel.MailTransporter.config_file[config] = /path/to/config.xml
  plugin.DotKernel.MailTransporter.config_file[transporter_list] = /path/to/transporter.xml
- ```
- And the files given are existing. You can use APPLICATION_PATH as a reference to the root DotKernel project folder
+```
+ And the files given are existing. You can use <code>APPLICATION_PATH</code> as a reference to the root DotKernel project folder
  
 
 And if you want to use smtp mail make sure:
  
- - Your config.xml contains "<smtpActive>true</smtpActive>" at least within the production tag
+ - Your config.xml contains <code><![CDATA[<smtpActive>true</smtpActive>]]</code> at least within the production tag
  - The mail server accepts connections 
  - You are able to send mail from that server
 
