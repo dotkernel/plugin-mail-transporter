@@ -49,6 +49,7 @@ class Plugin_DotKernel_MailTransporter_Factory
 			$smtpData = self::_getSmtp();
 			if(!empty($smtpData))
 			{
+				 
 				$mailConfig = array(
 					'auth' => 'login',
 					'username' => $smtpData['smtpUsername'],
@@ -56,7 +57,6 @@ class Plugin_DotKernel_MailTransporter_Factory
 					'port' => $smtpData['smtpPort'],
 					'ssl' => $smtpData['smtpSsl']
 				);
-				self::_updateSmtpCounter($smtpData['id']);
 				return new Zend_Mail_Transport_Smtp($smtpData['smtpServer'], $mailConfig);
 			}
 		}

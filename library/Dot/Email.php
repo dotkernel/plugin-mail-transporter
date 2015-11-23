@@ -4,10 +4,9 @@
  * DotKernel Application Framework
  *
  * @category   DotKernel
- * @package    DotLibrary
  * @copyright  Copyright (c) 2009-2015 DotBoost Technologies Inc. (http://www.dotboost.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * @version    $Id: Email.php 5 2015-05-13 14:11:17Z gabi $
+ * @version    $Id: Email.php 1015 2015-11-23 16:05:09Z gabi $
  */
 
 /**
@@ -47,17 +46,20 @@ class Dot_Email extends Zend_Mail
 		$this->seoOption = Zend_Registry::get('seo');
 		$this->option = Zend_Registry::get('option');
 		
+		// Plugin Call for DotKernel MailTransporter
 		$pluginLoader = Plugin_Loader::getInstance();
 		$plugin = $pluginLoader->loadPlugin('DotKernel', 'MailTransporter');
+		// if no enabled plugin was found go ahead without it
 		if($plugin instanceof Plugin_Interface)
 		{
 			$this->_transport = $this->_getTransportFromPlugin($plugin);
 		}
-		// transport 
+		// getting transport if none received from plugin 
 		if(!$this->_transport)
 		{
 			$this->_transport = $this->_getFallBackTransport();
 		}
+		
 	}
 	
 	/**
@@ -88,7 +90,12 @@ class Dot_Email extends Zend_Mail
 	 */
 	protected function _getTransportFromPlugin(Plugin_Interface $plugin)
 	{
-		return $plugin->getTransporter();
+		$transporter = $plugin->getTransporter();
+		if($transporter instanceof Zend_Mail_Transport_Abstract )
+		{
+			return $transporter;
+		}
+		return false;
 	}
 	
 	/**
@@ -111,6 +118,11 @@ class Dot_Email extends Zend_Mail
 	public function send($transport = null)
 	{
 		parent::setDefaultTransport($this->_transport);
+		if($transport != null)
+		{
+			parent::setDefaultTransport($transport);
+		}
+
 		try
 		{
 			parent::send();
@@ -121,11 +133,13 @@ class Dot_Email extends Zend_Mail
 			$subject = $this->option->alertMessages->email->subject;
 			$message = $this->option->alertMessages->email->message;
 			$devEmails = explode(',', $this->settings->devEmails);
+			$registry = Zend_Registry::getInstance();
 			
 			// preparing the message details
 			$details = array(
 				'e_class' => get_class($e),
 				'site_name' => $this->seoOption->siteName,
+				'site_url' => $registry->configuration->website->params->url, 
 				'e_message' => $e->getMessage(),
 				'to_email' => implode(',', $this->_to),
 				'from_email' => $this->getFrom(),
@@ -134,16 +148,21 @@ class Dot_Email extends Zend_Mail
 			
 			// creating the alert
 			$alert = new Dot_Alert();
+			
 			// send it to devs
 			$alert->setTo($devEmails);
 			$alert->setSubject($subject);
+			
 			// add the headers
 			$alert->addHeader( "From: " . $this->settings->siteEmail);
 			$alert->addHeader( "Reply-To:" . $this->settings->siteEmail );
 			$alert->addHeader( "X-Mailer: PHP/" . phpversion() ) ;
+			
 			// prepare the message
 			$alert->setContent($message);
 			$alert->setDetails($details);
+			
+			// this will trigger a notice
 			$alert->send();
 			return false;
 		}

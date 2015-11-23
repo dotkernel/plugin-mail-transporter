@@ -87,6 +87,9 @@ class Plugin_DotKernel_MailTransporter extends Plugin_Abstract
 		// using the key transporter because the tag in xml is transporter
 		foreach($transporterList['transporter'] as $transporterConfig)
 		{
+			$transporterConfig['enable'] = ($transporterConfig['enable'] === "true") ? true : false;
+			$transporterConfig['ssl'] = ($transporterConfig['ssl'] === "false") ? false : $transporterConfig['ssl'];
+			
 			if($transporterConfig['enable'] && $skip > 0 )
 			{
 				$skip--;
