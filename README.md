@@ -14,7 +14,7 @@ configs/plugin/DotKernel/MailTransporter/transporters.xml
 These files are also present in this repository  
 
  
-3. Merge de library/Plugin folder with yours. If you have a pre 1.8.0 version of DotKernel you can simply copy the folder, but we recommend updating your DotKernel to the latest version
+3. Merge the library/Plugin folder with yours. If you have a pre 1.8.0 version of DotKernel you can simply copy the folder, but we recommend updating your DotKernel to the latest version
 
 4. Make sure the following lines are uncommented in your Dot_Email class (/library/Dot/Email.php)
 ```php
