@@ -61,6 +61,27 @@ E-mail now works as a plugin, but the limit cannot be set
 
 You can set more transporters and disable the ones you don't want to use
 
+Usage
+-------
+
+Add your transporters in the /configs/plugin/DotKernel/MailTransporter/transporters.xml
+You can use the plugin with the Dot_Email class.
+If you wish to use the plugin separately just add these lines where needed:
+```php
+    $skip = 0;
+    $pluginLoader = Plugin_Loader::getInstance();
+    $plugin = $pluginLoader->loadPlugin('DotKernel', 'MailTransporter');
+    $transporter = $plugin->getTransporter($skip);
+```
+
+We have added the skip feature in case a transporter fails in sending emails . The $skip argument is optional
+The plugin will return false if no other transporters are available
+
+
+
+Support
+-------
+
 If no available SMTP Transport was found, the plugin will create a Send_Mail Transporter (see Zend_Mail_Transport)
 
 Details about Zend SendMail Transport : http://framework.zend.com/manual/1.12/en/zend.mail.introduction.html
