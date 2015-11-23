@@ -19,14 +19,14 @@
 			<transporter>
 				<enable>true</enable>
 				<!-- smtp server login -->
-				<username>user@example.com</username>
+				<username>user2@example.com</username>
 				<password>password</password>
 				<!--  smtp host -->
 				<server>mail.example.com</server>
 				<!--  smtp port -->
-				<port>465</port>
+				<port>25</port>
 				<!-- ssl =  ssl / tls / false (if disabled) -->
-				<ssl>ssl</ssl>
+				<ssl>false</ssl>
 			</transporter>
 		</transporterList>
 	</production>
