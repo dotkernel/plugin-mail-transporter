@@ -52,23 +52,22 @@ Security notice:
 
 And if you want to use smtp mail make sure:
  
- - Your config.xml contains <code><![CDATA[<smtpActive>true</smtpActive>]]</code> at least within the production tag
- - The mail server accepts connections 
+ - Your plugin's config.xml contains smtpActive is set to <code>true</code> at least within the production tag
+ - The mail server accepts connections with the provided configuration 
  - You are able to send mail from that server
 
- 
- E-mail now works as a plugin, but the limit cannot be set 
- 
- You can set more transporters and disable the ones you don't want to use
- 
- If no available SMTP Transport was found, the plugin will create a Send_Mail Transporter (see Zend_Mail_Transport)
- 
- Details about Zend SendMail Transport : http://framework.zend.com/manual/1.12/en/zend.mail.introduction.html
- Details about Zend SMTP Transport: 
+
+E-mail now works as a plugin, but the limit cannot be set 
+
+You can set more transporters and disable the ones you don't want to use
+
+If no available SMTP Transport was found, the plugin will create a Send_Mail Transporter (see Zend_Mail_Transport)
+
+Details about Zend SendMail Transport : http://framework.zend.com/manual/1.12/en/zend.mail.introduction.html
+Details about Zend SMTP Transport: 
  * http://framework.zend.com/manual/1.12/en/zend.mail.sending.html
  * http://framework.zend.com/manual/1.12/en/zend.mail.smtp-authentication.html
  * http://framework.zend.com/manual/1.12/en/zend.mail.smtp-secure.html
 
- 
  For more support or suggestions visit: www.dotkernel.com 
   or contact us here: http://www.dotkernel.com/contact/
