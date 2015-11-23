@@ -1,19 +1,37 @@
 # plugin-mail-transporter
 Plugin for dotkernel mail Transporter (v1.0.1)
 
-To install you should:
+Installation steps:
 
 1. Add the Mail Transporter settings from this configs/plugins.ini to your configs/plugins.ini
+
+2. Create or copy the configuration files for this plugin. By default the files are: 
+```
+configs/plugin/DotKernel/MailTransporter/config.xml
+configs/plugin/DotKernel/MailTransporter/transporters.xml
+```
+
+These files are also present in this repository  
+
  
-2. Merge de library/Plugin folder with yours
+3. Merge de library/Plugin folder with yours. If you have a pre 1.8.0 version of DotKernel you can simply copy the folder, but we recommend updating your DotKernel to the latest version
 
-3. Replace the Dot_Email Constructor with the one found in /library/Dot/Email.php or uncomment the plugin usage in your Dot_Email Constructor (works only for LTS versions)
-
-4. Add missing methods from LTS version (if your version is not LTS)
+4. Make sure the following lines are uncommented in your Dot_Email class (/library/Dot/Email.php)
+```php
+		// Plugin Call for DotKernel MailTransporter
+		$pluginLoader = Plugin_Loader::getInstance();
+		$plugin = $pluginLoader->loadPlugin('DotKernel', 'MailTransporter');
+		// if no enabled plugin was found go ahead without it
+		if($plugin instanceof Plugin_Interface)
+		{
+			$this->_transport = $this->_getTransportFromPlugin($plugin);
+		}
+```
+In case you are not sure we have added that file in this repository so you can simply copy it form here. 
 
 
 * Security notice:
- - In order to protect your SMTP transporters, or any sensible plugin data make sure a .htaccess file exists at least in the /config directory
+ - In order to protect your SMTP transporters, or any sensible plugin data make sure a .htaccess file exists at least in the <code>/configs</code> directory
   The .htaccess file must contain these two lines:
 ```
    Order Deny,Allow
@@ -22,11 +40,14 @@ To install you should:
  DotKernel comes with this file within the /configs/ directory, but if you don't have it, it must be created.
  
 
-* Make sure plugin settings are valid:
- - plugin.DotKernel.MailTransporter.enable = true
- - plugin.DotKernel.MailTransporter.config_file[config] = /path/to/config.xml
- - plugin.DotKernel.MailTransporter.config_file[transporter_list] = /path/to/transporter.xml
- - the files exist
+* Make sure plugin.ini settings are valid:
+ ```
+ plugin.DotKernel.MailTransporter.enable = true
+ plugin.DotKernel.MailTransporter.config_file[config] = /path/to/config.xml
+ plugin.DotKernel.MailTransporter.config_file[transporter_list] = /path/to/transporter.xml
+ ```
+ And the files given are existing. You can use APPLICATION_PATH as a reference to the root DotKernel project folder
+ 
 
 And if you want to use smtp mail make sure:
  
@@ -47,7 +68,6 @@ And if you want to use smtp mail make sure:
  * http://framework.zend.com/manual/1.12/en/zend.mail.smtp-authentication.html
  * http://framework.zend.com/manual/1.12/en/zend.mail.smtp-secure.html
 
- 
  
  For more support or suggestions visit: www.dotkernel.com 
   or contact us here: http://www.dotkernel.com/contact/
